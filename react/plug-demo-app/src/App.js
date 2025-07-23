@@ -31,8 +31,6 @@ function App() {
     // Initializing PLuG
     window.plugSDK.init({
       app_id: "<your_unique_app_id>", // get this from Settings > Support > PLuG Settings
-      enable_session_recording: true, // can be set from PLuG settings API as well
-      session_recording_key: "<your_session_recording_key>", // get this from UE app; can be set from PLuG settings API as well
       session_recording_options: { // recording options
         sessionReplay: {
           maskAllInputs: false,
@@ -43,7 +41,7 @@ function App() {
         }
       },
       session_token: session_token,
-      _env: 'DEV', // only required when testing in DEV env
+      // _env: 'DEV', // only required when testing in DEV env
     });
   }, []);
 
@@ -55,8 +53,12 @@ function App() {
     window.plugSDK.trackEvent('form_data', { name, email });
   };
 
+  const addCustomSessionAttribute = () => {
+    window.plugSDK.addSessionProperties({'my_field': 'my_value'});
+  };
+
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: '#c0ffee', height: '100vh', width: '100vw' }}>
       <h1>PLuG Training - React page</h1>
 
       {/* this input is not masked */}
@@ -66,6 +68,8 @@ function App() {
       <input type="email" placeholder="Enter your email" id="input-email" />
 
       <button onClick={trackFormData}>Click me to track an event</button>
+
+      <button onClick={addCustomSessionAttribute}>Click me to add a custom session attribute</button>
 
       <br />
 
