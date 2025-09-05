@@ -24,3 +24,17 @@ npm install
 npm start
 ```
 5. React app should automatically open in the browser. If it doesn't, open `localhost:3000` in the browser
+
+### QuickTickets Demo website
+
+1. Start the frontend:
+```
+cd QuickTickets-demo/frontend
+npm start
+```
+2. Start the backend
+```
+cd QuickTickets-demo/api
+npm start
+```
+3. Open http://localhost:3000
